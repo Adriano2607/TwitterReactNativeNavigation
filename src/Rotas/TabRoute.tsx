@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 import TelaHome from "../screens/TelaHome";
-import  TelaSettings  from "../screens/TelaSettings";
+import TelaMensagens from "../screens/TelaSettings";
 
 
 const Tab = createBottomTabNavigator();
@@ -16,16 +16,18 @@ const Tab = createBottomTabNavigator();
             <MaterialIcons name="home" size={20} color="black" />
           ),tabBarActiveBackgroundColor:'#6c788e',tabBarActiveTintColor:'black',
           
+        }} />
+
+<Tab.Screen
+        name="MENSAGENS"
+        component={TelaMensagens}   options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="message" size={20} color="black" />
+          ),tabBarActiveBackgroundColor:'#6c788e',tabBarActiveTintColor:'black',
           
         }} />
 
-  <Tab.Screen
-        name="Settings"
-        component={TelaSettings}   options={{
-          tabBarIcon: () => (
-            <MaterialIcons name="settings" size={20} color="black" />
-          ),tabBarActiveBackgroundColor:'#6c788e',tabBarActiveTintColor:'black'
-        }} />
+ 
     </Tab.Navigator>
     
   );

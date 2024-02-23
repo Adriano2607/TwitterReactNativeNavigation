@@ -13,7 +13,7 @@ const data = require("../data/dados.json")
 
 
 function TelaHome() {
-  const [userLogin, setUserLogin] = useState<UserLogin | null>(null);
+  const [userLogin, setUserLogin] = useState<UserLogin | null>(null); //aqui para parecer o nome na tela
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +24,7 @@ function TelaHome() {
           setUserLogin(parsedData);
         }
       } catch (error) {
-        console.error('Error retrieving user data:', error);
+        console.error(error);
       }
     };
 
@@ -34,9 +34,6 @@ function TelaHome() {
   function renderItem({ item }: { item: UserData }) {
 
     return (
-
-
-
 
       <SafeAreaView style={{
         padding: 25,
@@ -90,16 +87,7 @@ function TelaHome() {
   }
   return (
     <View style={styles.container}>
-     <View style={styles.create}>
-      <View>
-      <Text style={styles.usuario}>Bem Vindo, {userLogin?.username}</Text>
-      </View>
-      <View>
-      <Ionicons name="create" size={24} color="black" />
-      </View>
-     </View>
   
-
       <FlatList
         data={data.feed}
         renderItem={renderItem}
