@@ -1,0 +1,3 @@
+corFundoCard = #a6aec1
+corFundo = #6c788e
+
