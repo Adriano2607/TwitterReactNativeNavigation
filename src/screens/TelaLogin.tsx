@@ -1,24 +1,12 @@
-
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { View, Text, Alert, TextInput, Pressable, StyleSheet } from "react-native"
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {UserLogin,UserData} from '../interfaces/interfaces';
-
-const storeData = async (value: UserLogin) => {
-  try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem('userLogin', jsonValue);
-  } catch (e) {
-    console.error(e)
-  }
-};
 
 
-const Login = ({ navigation }: any) => {
+
+const Login: FC<{ navigation: any }> = ({ navigation }) => {
+  const data = require("../data/dados.json");
   const [getUsername, setUsername] = useState("");
   const [getPassword, setPassword] = useState("");
-
-
 
   const goSuccess = () => {
     navigation.navigate("Success");
@@ -29,24 +17,15 @@ const Login = ({ navigation }: any) => {
   };
 
   const login = () => {
+    if(getPassword == '' || getUsername == ''){
+      Alert.alert("!!!", "Insira os dados", [ { text: "!!!" }, ]);
+    }else{
+      if (getUsername === data.login[0].username && getPassword === data.login[0].password) {
+        Alert.alert("Sucesso", "Você está logado!", [ { text: "OK", onPress: goSuccess }, ]);
+      } else {
+        Alert.alert("Atencao","Conta nao Encontrada", [ { text: "OK", onPress: goError }, ]);
+      }
 
-    if (getUsername !== "" && getPassword !== "") {
-      const userData = {
-        username: getUsername,
-        password: getPassword,
-      };
-
-      storeData(userData)
-
-      Alert.alert("Alerta",
-        `Você está logado!\nUsuário: ${getUsername}\nSenha: ${getPassword}`, [
-        { text: "OK", onPress: goSuccess },
-      ]);
-    } else {
-      Alert.alert("Alerta", "Prencha os dados corretamente!", [
-        { text: "OK", onPress: goError },
-
-      ]);
     }
   };
 

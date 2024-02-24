@@ -1,12 +1,13 @@
 
 import LoginScreen from "../screens/TelaLogin";
 import ErrorScreen from "../screens/TelaErro";
-import TabNavigation from "./TabRoute"; 
+
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DrawerRoutes } from "./DrawerRoutes";
+import { StackParamList } from "../types/navigation";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<StackParamList>();
 
 const StackRoutes  = () => {
   return (

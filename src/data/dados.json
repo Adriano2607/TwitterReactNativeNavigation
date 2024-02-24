@@ -21,5 +21,11 @@
             "avatar": "https://source.unsplash.com/random",
             "imagem": "https://source.unsplash.com/random"
             }
+    ],
+    "login":[
+        {
+            "username": "Admin",
+            "password":"Admin"
+        }
     ]
 }

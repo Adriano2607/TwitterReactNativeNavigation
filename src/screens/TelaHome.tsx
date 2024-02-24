@@ -4,16 +4,13 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-
 import { UserLogin, UserData } from '../interfaces/interfaces';
+
 
 const data = require("../data/dados.json")
 
-
-
 function TelaHome() {
-  const [userLogin, setUserLogin] = useState<UserLogin | null>(null); //aqui para parecer o nome na tela
+  const [userLogin, setUserLogin] = useState<UserLogin | null>(null); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,39 +63,29 @@ function TelaHome() {
               <Text>0</Text>
 
             </View>
-
-
             <Pressable style={{ alignItems: 'center' }}>
               <AntDesign name="heart" size={22} color={`black`} />
               <Text>{item.curtidas || 0}</Text>
-
             </Pressable>
-
-
           </View>
-
-
         </View>
 
       </SafeAreaView>
-
 
     );
   }
   return (
     <View style={styles.container}>
-  
       <FlatList
         data={data.feed}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-
         keyExtractor={(item) => item.id}
       />
-
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
