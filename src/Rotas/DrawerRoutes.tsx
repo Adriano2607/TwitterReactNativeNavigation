@@ -3,6 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import TelaSettings from '../screens/TelaSair';
 import TelaFifa from '../screens/TelaFifa';
 import TelaHome from '../screens/TelaHome';
+import TabRoutes from './TabRoute';
 
 
 const Drawer = createDrawerNavigator();
@@ -12,7 +13,7 @@ export const DrawerRoutes = () => {
     <Drawer.Navigator>
       <Drawer.Screen
         name="HOME"
-        component={TelaHome}
+        component={TabRoutes}
       />
 
 <Drawer.Screen
