@@ -14,7 +14,7 @@ const StackRoutes  = () => {
     <Stack.Navigator screenOptions={{
       headerStyle:{backgroundColor:'white'}
     }}>
-      <Stack.Screen name="Login" component={LoginScreen} options={{title:'Tudo Nosso'}} />
+      <Stack.Screen name="Login" component={LoginScreen} options={{title:'Adriano'}} />
       <Stack.Screen name="Success" component={DrawerRoutes} options={{headerShown:false}}  />
       <Stack.Screen name="Error" component={ErrorScreen} options={{headerTintColor:'red',statusBarColor:'red'}}/>
     </Stack.Navigator>

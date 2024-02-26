@@ -11,6 +11,8 @@ const data = require("../data/dados.json")
 
 function TelaHome() {
   const [userLogin, setUserLogin] = useState<UserLogin | null>(null); 
+  const [, setForceRender] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +30,16 @@ function TelaHome() {
     fetchData();
   }, []);
 
+  function Like(object:UserData){
+    const itemEncontrado = data.feed.find((a: { id: string; }) => a.id === object.id);
+    
+
+    if(itemEncontrado) {
+    itemEncontrado.curtidas = itemEncontrado.curtidas ? itemEncontrado.curtidas + 1 : 1;
+    setForceRender(prev => !prev); 
+    }
+  }
+
   function renderItem({ item }: { item: UserData }) {
 
     return (
@@ -37,8 +49,8 @@ function TelaHome() {
         borderWidth: 1,
         borderRadius: 15,
         marginBottom: 15,
-        borderColor: `#a6aec1`,
-        backgroundColor: `#a6aec1`
+        borderColor:"#003366",
+        backgroundColor: "#99CCFF"
       }}>
 
         <View style={styles.itemContainer}>
@@ -53,18 +65,18 @@ function TelaHome() {
 
           <View style={{ flex: 1, flexDirection: `row`, justifyContent: 'space-between', marginTop: 10, paddingLeft: 10, paddingRight: 10 }}>
             <View style={{ alignItems: 'center' }}>
-              <FontAwesome name="comment" size={22} color="black" />
+              <FontAwesome name="comment" size={22} color="#336699" />
               <Text>0</Text>
             </View>
 
 
             <View style={{ alignItems: 'center' }}>
-              <Entypo name="retweet" size={22} color="black" />
+              <Entypo name="retweet" size={22} color="#336699" />
               <Text>0</Text>
 
             </View>
-            <Pressable style={{ alignItems: 'center' }}>
-              <AntDesign name="heart" size={22} color={`black`} />
+            <Pressable onPress={() => Like(item)} style={{ alignItems: 'center' }}>
+              <AntDesign name="heart" size={22} color={`#336699`} />
               <Text>{item.curtidas || 0}</Text>
             </Pressable>
           </View>
@@ -93,7 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: `#6c788e`,
+    backgroundColor: "#003366",
     position: `relative`
   },
   icones: {

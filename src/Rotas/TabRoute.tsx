@@ -14,8 +14,8 @@ const TabRoutes = () => {
                 name="INICIO"
                 component={TelaHome} options={{
                     tabBarIcon: () => (
-                        <MaterialIcons name="home" size={20} color="black" />
-                    ), tabBarActiveBackgroundColor: '#6c788e', tabBarActiveTintColor: 'black',
+                        <MaterialIcons name="home" size={20} color="white" />
+                    ), tabBarActiveBackgroundColor: '#003366',tabBarActiveTintColor:"white",tabBarInactiveTintColor:"black"
 
                 }} />
 
@@ -25,7 +25,7 @@ const TabRoutes = () => {
                     options={{
                         tabBarIcon: () => (
                             <MaterialIcons name="message" size={20} color="black" />
-                        ), tabBarActiveBackgroundColor: '#6c788e', tabBarActiveTintColor: 'black',
+                        ), tabBarActiveBackgroundColor: '#003366',tabBarActiveTintColor:"white"
 
                     }}
                 />

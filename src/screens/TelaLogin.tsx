@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#F7F7F7"
+    backgroundColor: "white"
   },
   input: {
     height: 50,
@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "bold",
     alignSelf: "center",
-    color: "#000080",
+    color: "#003366",
   },
   button: {
-    backgroundColor: "#000080",
+    backgroundColor: "#003366",
     height: 50,
     width: "95%",
     alignSelf: "center",

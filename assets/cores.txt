@@ -1,3 +1,7 @@
-corFundoCard = #a6aec1
-corFundo = #6c788e
+
+azul4 = #003366
+azul3 = #336699
+azul2 = #6699CC
+azul1 = #99CCFF
+
 

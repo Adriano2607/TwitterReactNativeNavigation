@@ -5,27 +5,30 @@
             "username": "Gremio",
             "texto": "#9",
             "avatar": "https://www.imagensempng.com.br/wp-content/uploads/2021/01/Escudo-Gremio-Png-1024x1024.png",
-            "imagem": "https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2023/07/18/1862642377-52633429567090a260ea3k-1200x800-1.jpg"
+            "imagem": "https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2023/07/18/1862642377-52633429567090a260ea3k-1200x800-1.jpg",
+            "curtidas":5
         },
         {
             "id": 2,
             "username": "Microsoft",
             "texto": "Exemplo de Microsoft",
             "avatar": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAVFBMVEX////yUCJ/ugAApO//uQDxOgBytADyShT2j3v/+/T/tAAAnO74+/R7uACpz3T0+f50wPTxMgD1hW//rgDwHABnrwDxQwD4s6ejzGgAle0Amu5ovPNVGgEPAAABAklEQVR4nO3biQnCQBRF0bhkceKWxGjU/vsUHKzgMyDh3AIenAJeVUmSJEmSJEmSJEmSJEmSpH/tVocaxu/KcW5CzQWF9SZU22Vhsw3VEBISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhKuSDi0oe4/4SlUSeHYxXpk4XIOtRQUSlL5LtHyzCFYQeGzD/V6Z+CUQk0Fhf0u1jUL0z5UIiQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCRckXD97zxJkiRJkiRJkiRJkiRJkhTrA29gzkcc3y0uAAAAAElFTkSuQmCC",
-            "imagem": "https://99prod.s3.amazonaws.com/uploads/b5a3b4af-f9e8-40db-9e5e-576791aa5307/microsoft.png"
+            "imagem": "https://99prod.s3.amazonaws.com/uploads/b5a3b4af-f9e8-40db-9e5e-576791aa5307/microsoft.png",
+            "curtidas":2
           },
           {
             "id": 3,
             "username": "Random",
             "texto": "Aleatorio",
             "avatar": "https://source.unsplash.com/random",
-            "imagem": "https://source.unsplash.com/random"
+            "imagem": "https://source.unsplash.com/random",
+            "curtidas":1
             }
     ],
     "login":[
         {
-            "username": "Admin",
-            "password":"Admin"
+            "username": "Adr",
+            "password":"Adr"
         }
     ]
 }
