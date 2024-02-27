@@ -1,10 +1,12 @@
-import { View, FlatList, Text, Image, StyleSheet, SafeAreaView, Pressable } from 'react-native';
+import { View, FlatList, Text, Image, StyleSheet, SafeAreaView, Pressable, Switch } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserLogin, UserData } from '../interfaces/interfaces';
+import { dark, light } from '../constants/theme';
+import { ThemeContext } from '../contexts/theme';
 
 
 const data = require("../data/dados.json")
@@ -12,6 +14,19 @@ const data = require("../data/dados.json")
 function TelaHome() {
   const [userLogin, setUserLogin] = useState<UserLogin | null>(null); 
   const [, setForceRender] = useState(false);
+
+  const { theme, setTheme } = useContext(ThemeContext);
+  const [isEnabled, setIsEnabled] = useState(false);
+
+
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+    console.log('cor recebida === ' +theme)
+    const newTheme = theme === 'dark' ? 'light' : 'dark'; 
+    console.log('cor trocada === '+newTheme)
+    setTheme(newTheme); 
+  };
+
 
 
   useEffect(() => {
@@ -41,7 +56,7 @@ function TelaHome() {
   }
 
   function renderItem({ item }: { item: UserData }) {
-
+    
     return (
 
       <SafeAreaView style={{
@@ -50,7 +65,7 @@ function TelaHome() {
         borderRadius: 15,
         marginBottom: 15,
         borderColor:"#003366",
-        backgroundColor: "#99CCFF"
+        backgroundColor: theme === "dark" ? dark.carColor : light.carColor,
       }}>
 
         <View style={styles.itemContainer}>
@@ -86,8 +101,61 @@ function TelaHome() {
 
     );
   }
+
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: 50,
+      backgroundColor: theme === "dark" ? dark.background : light.background,
+      position: `relative`
+    },
+    icones: {
+      textAlign: `center`
+    },
+    itemContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    itemImage: {
+      width: 40,
+      height: 40,
+      borderRadius: 25,
+      marginRight: 10,
+    },
+    itemText: {
+      fontSize: 16,
+      fontWeight: `bold`
+    },
+    imagemFeed: {
+      width: 300,
+      height: 300,
+      borderRadius: 25,
+      marginTop: 15,
+      marginBottom: 15
+    },usuario:{
+      marginBottom:15,
+      fontWeight:'bold',
+      fontSize:20,
+      color:`white`
+    },create:{
+      flexDirection:`row`,
+      justifyContent:`space-between`,
+      width:'100%',
+      paddingHorizontal:30
+    }
+  });
+  
   return (
     <View style={styles.container}>
+       <Switch
+        thumbColor={theme === 'dark' ? '#f5dd4b' : 'red'}
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
       <FlatList
         data={data.feed}
         renderItem={renderItem}
@@ -99,51 +167,6 @@ function TelaHome() {
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 50,
-    backgroundColor: "#003366",
-    position: `relative`
-  },
-  icones: {
-    textAlign: `center`
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  itemImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 25,
-    marginRight: 10,
-  },
-  itemText: {
-    fontSize: 16,
-    fontWeight: `bold`
-  },
-  imagemFeed: {
-    width: 300,
-    height: 300,
-    borderRadius: 25,
-    marginTop: 15,
-    marginBottom: 15
-  },usuario:{
-    marginBottom:15,
-    fontWeight:'bold',
-    fontSize:20,
-    color:`white`
-  },create:{
-    flexDirection:`row`,
-    justifyContent:`space-between`,
-    width:'100%',
-    paddingHorizontal:30
-  }
-});
 
 
 export default TelaHome
