@@ -22,7 +22,7 @@ function TelaHome() {
 
   const toggleSwitch = () => {
     setIsEnabled(previousState => !previousState);
-    console.log('cor recebida === ' +theme)
+    //console.log('tema recebida === ' +theme)
     const newTheme = theme === 'dark' ? 'light' : 'dark'; 
     //console.log('cor trocada === '+newTheme)
     setTheme(newTheme); 
@@ -65,6 +65,7 @@ function TelaHome() {
         borderWidth: 1,
         borderRadius: 15,
         marginBottom: 15,
+        
         borderColor:"#003366",
         backgroundColor: theme === "dark" ? dark.carColor : light.carColor,
       }}>
@@ -76,24 +77,24 @@ function TelaHome() {
 
         <View>
 
-          <Text style={{ paddingLeft: 5, fontWeight: `bold` }}>{item.texto || `Undefined`}</Text>
+          <Text style={styles.descricao}>{item.texto || `Undefined`}</Text>
           <Image source={{ uri: item.imagem || 'https://www.petz.com.br/blog/wp-content/uploads/2022/06/animais-selvagens-3.jpg' }} style={styles.imagemFeed} />
 
-          <View style={{ flex: 1, flexDirection: `row`, justifyContent: 'space-between', marginTop: 10, paddingLeft: 10, paddingRight: 10 }}>
+          <View style={styles.btn}>
             <View style={{ alignItems: 'center' }}>
-              <FontAwesome name="comment" size={22} color="#336699" />
-              <Text>0</Text>
+              <FontAwesome name="comment" size={22} color={theme ==='light' ? light.color : dark.color} />
+              <Text style={styles.numeros}>0</Text>
             </View>
 
 
             <View style={{ alignItems: 'center' }}>
-              <Entypo name="retweet" size={22} color="#336699" />
-              <Text>0</Text>
+              <Entypo name="retweet" size={22} color={theme ==='light' ? light.color : dark.color}  />
+              <Text style={styles.numeros}>0</Text>
 
             </View>
             <Pressable onPress={() => Like(item)} style={{ alignItems: 'center' }}>
-              <AntDesign name="heart" size={22} color={`#336699`} />
-              <Text>{item.curtidas || 0}</Text>
+              <AntDesign name="heart" size={22} color={theme ==='light' ? light.color : dark.color} />
+              <Text style={styles.numeros}>{item.curtidas || 0}</Text>
             </Pressable>
           </View>
         </View>
@@ -110,8 +111,7 @@ function TelaHome() {
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 50,
-      backgroundColor: theme === "dark" ? dark.background : light.background,
-      position: `relative`
+      backgroundColor: theme === "dark" ? dark.background : light.background
     },
     icones: {
       textAlign: `center`
@@ -119,7 +119,7 @@ function TelaHome() {
     itemContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginBottom: 10,
+      marginBottom: 10
     },
     itemImage: {
       width: 40,
@@ -129,7 +129,8 @@ function TelaHome() {
     },
     itemText: {
       fontSize: 16,
-      fontWeight: `bold`
+      fontWeight: `bold`,
+      color: theme === "dark" ? dark.color : light.color,
     },
     imagemFeed: {
       width: 300,
@@ -147,13 +148,25 @@ function TelaHome() {
       justifyContent:`space-between`,
       width:'100%',
       paddingHorizontal:30
+    },descricao:{
+      paddingLeft: 5,
+       fontWeight: `bold` ,
+       color: theme === "dark" ? dark.color : light.color
+    },btn:{
+       flex: 1, 
+       flexDirection: `row`, 
+       justifyContent: 'space-between',
+        marginTop: 10, paddingLeft: 10,
+         paddingRight: 10 
+    },numeros:{
+      color: theme === "dark" ? dark.color : light.color
     }
   });
   
   return (
     <View style={styles.container}>
        <Switch
-        thumbColor={theme === 'dark' ? '#f5dd4b' : 'red'}
+        thumbColor={theme === 'dark' ? 'white' : 'black'}
         onValueChange={toggleSwitch}
         value={isEnabled}
       />
