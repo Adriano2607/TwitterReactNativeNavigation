@@ -17,13 +17,14 @@ function TelaHome() {
 
   const { theme, setTheme } = useContext(ThemeContext);
   const [isEnabled, setIsEnabled] = useState(false);
-
+  
+ 
 
   const toggleSwitch = () => {
     setIsEnabled(previousState => !previousState);
     console.log('cor recebida === ' +theme)
     const newTheme = theme === 'dark' ? 'light' : 'dark'; 
-    console.log('cor trocada === '+newTheme)
+    //console.log('cor trocada === '+newTheme)
     setTheme(newTheme); 
   };
 
